@@ -44,4 +44,11 @@ class ReunionTest < Minitest::Test
     result2 = reunion.add_activity('Flag football')
     assert_equal 2, result2.count
   end
+
+  def test_total_cost_of_reunion
+    reunion = Reunion.new('Park')
+    reunion.add_activity('Volleyball', ({ name: 'Bob', paid: 10.00 }))
+
+    assert_equal 10, reunion.cost
+  end
 end

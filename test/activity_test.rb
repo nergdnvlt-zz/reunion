@@ -24,6 +24,13 @@ class ActivityTest < Minitest::Test
     assert_equal 'Hanging out', activity.description
   end
 
+  def test_pass_participant_as_argument
+    bowling = Activity.new('Bowling', ({ name: 'Bob', paid: 10.00 }))
+
+    assert_equal ['Bob'], bowling.participants
+    assert_equal 10.00, bowling.total_cost
+  end
+
   def test_activity_has_a_participant
     hiking = Activity.new
     hiking.add_participant({ name: 'Bob', paid: 20.00 })

@@ -1,13 +1,21 @@
 # Creates an activity instance
 class Activity
   attr_reader :description,
-              :participants
+              :participants,
+              :cost_array
 
-  def initialize(description='Hanging out')
-    @description = description
+  def initialize(description='Hanging out', participant = {})
+    @participant_array = []
     @participants = []
     @cost_array = []
-    @participant_array = []
+    if participant == {}
+      @participants = []
+      @cost_array = []
+      @participant_array = []
+    else
+      add_participant(participant)
+    end
+    @description = description
   end
 
   def add_participant(participant)
