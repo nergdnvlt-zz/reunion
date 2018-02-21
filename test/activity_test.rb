@@ -5,7 +5,7 @@ require './lib/activity'
 
 class ActivityTest < Minitest::Test
   def setup
-    @hiking = Activity.new
+    @hiking = Activity.new('Hiking')
     @hiking.add_participant({ name: 'Odin', paid: 20.00 })
     @hiking.add_participant({ name: 'Thor', paid: 30.00 })
     @hiking.add_participant({ name: 'Bob', paid: 10.00 })
@@ -13,6 +13,15 @@ class ActivityTest < Minitest::Test
 
   def test_create_instance_of_activity
     assert_instance_of Activity, @hiking
+  end
+
+  def test_activity_has_description
+    assert_equal 'Hiking', @hiking.description
+  end
+
+  def test_activity_has_default_description
+    activity = Activity.new
+    assert_equal 'Hanging out', activity.description
   end
 
   def test_activity_has_a_participant
