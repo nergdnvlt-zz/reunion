@@ -1,4 +1,5 @@
 require './lib/activity'
+
 # Creates a reunion instance
 class Reunion
   attr_reader :location,
@@ -10,9 +11,6 @@ class Reunion
   end
 
   def add_activity(activity_name)
-    require "pry"; binding.pry
-    activity = Activity.new(activity_name)
-    @activities << activity
-    require "pry"; binding.pry
+    @activities << Activity.new(activity_name)
   end
 end

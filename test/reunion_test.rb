@@ -30,8 +30,18 @@ class ReunionTest < Minitest::Test
 
   def test_add_new_activity
     reunion = Reunion.new('Bowling Alley')
-    reunion.add_activity('bowling')
+    reunion.add_activity('Bowling')
     result = reunion.activities
     assert_equal 1, result.count
+  end
+
+  def test_add_multiple_activities
+    reunion = Reunion.new('Park')
+    reunion.add_activity('Volleyball')
+    result = reunion.activities
+    assert_equal 1, result.count
+
+    result2 = reunion.add_activity('Flag football')
+    assert_equal 2, result2.count
   end
 end
